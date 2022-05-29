@@ -119,11 +119,12 @@ class BPlusTree():
                     break
         return current_node
 
-    def delete(self,key,value):
+    def delete(self,key):
         if(len(key) < 25):
             key = key.ljust(25," ")
         else:
             key = key[:25]
+        value = self.lookup(key)[0]
         curr_node = self.search(key)
         temp = 0
         for i, item in enumerate(curr_node.keys):
